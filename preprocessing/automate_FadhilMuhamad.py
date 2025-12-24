@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
-RAW_FILE = "CaliforniaHousing.csv"
 OUTPUT_DIR = "preprocessing"
 OUTPUT_FILE = "CaliforniaHousing_preprocessed.csv"
 
-data = pd.read_csv(RAW_FILE)
+data = pd.read_csv("./CaliforniaHousing.csv")
 
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df_copy = df.copy()
