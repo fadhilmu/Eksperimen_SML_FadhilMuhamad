@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
+import os
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
 def preprocess_housing(df: pd.DataFrame):
     df = df.copy()
     df['total_bedrooms'] = df['total_bedrooms'].fillna(df['total_bedrooms'].median())
@@ -23,7 +28,10 @@ def preprocess_housing(df: pd.DataFrame):
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 dataset_path = os.path.abspath(os.path.join(script_dir, "..", "CaliforniaHousing.csv"))
-output_path = os.path.join(script_dir, "CaliforniaHousing_preprocessed.csv")
+output_folder = script_dir
+os.makedirs(output_folder, exist_ok=True)
+
+output_path = os.path.join(output_folder, "CaliforniaHousing_preprocessed.csv")
 
 df = pd.read_csv(dataset_path)
 df_preprocessed = preprocess_housing(df)
